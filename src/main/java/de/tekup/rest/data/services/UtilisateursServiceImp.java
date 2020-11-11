@@ -36,6 +36,14 @@ public class UtilisateursServiceImp implements UtilisateursService{
 		return entity;
 	}
 
+	@Override
+	public  UtilisateursEntity createUtilisateurs(UtilisateursEntity utilisateurRequest) {
+		// TODO Auto-generated method stub
+		
+	
+		return reposUtili.save(utilisateurRequest);
+	}
+
 	
 	
 	

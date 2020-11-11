@@ -8,6 +8,7 @@ import de.tekup.rest.data.models.UtilisateursEntity;
 
 public interface UtilisateursService {
 
-	List<UtilisateursEntity>getAllEntities();
+	List<UtilisateursEntity> getAllEntities();
 	UtilisateursEntity getEntityById(long id);
+	UtilisateursEntity createUtilisateurs(UtilisateursEntity entity);
 }
