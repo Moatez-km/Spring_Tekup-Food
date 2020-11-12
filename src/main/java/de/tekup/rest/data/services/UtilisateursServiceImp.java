@@ -31,7 +31,7 @@ public class UtilisateursServiceImp implements UtilisateursService{
 		if(opt.isPresent()) 
 			entity=opt.get();
 		else
-			throw new NoSuchElementException("Person with this Id is not found");
+			throw new NoSuchElementException("Utilisateur with this Id is not found");
 		
 		return entity;
 	}
@@ -44,6 +44,23 @@ public class UtilisateursServiceImp implements UtilisateursService{
 		return reposUtili.save(utilisateurRequest);
 	}
 
+	@Override
+	public UtilisateursEntity rechargeSolde(long id, UtilisateursEntity newUtilisateur) {
+		UtilisateursEntity oldUtilisateur =this.getEntityById(id);
+		double s = 0;
+		if(newUtilisateur.getId()!= 0) {
+			s+= oldUtilisateur.getSolde()+newUtilisateur.getSolde();
+		    oldUtilisateur.setSolde(s);
+		}else
+			throw new NoSuchElementException("Utilisateur with this Id is not found");
+		
+		
+		return oldUtilisateur;
+	}
+
+	
+
+	
 	
 	
 	
