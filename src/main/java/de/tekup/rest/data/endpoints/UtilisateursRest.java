@@ -48,11 +48,20 @@ public class UtilisateursRest {
 		
 		
 	}
-    @PutMapping("recharge/{id}")
+    
+    @PutMapping("/recharge/{id}")
     public UtilisateursEntity rechargeSolde(@PathVariable("id")  long id,@RequestBody UtilisateursEntity newUtilisateurs) {
 		return service.rechargeSolde(id, newUtilisateurs);
     	
     }
+    @PutMapping("/modify/{id}")
+    public UtilisateursEntity modifyUtilisateur(@PathVariable("id") long id,@RequestBody UtilisateursEntity newUtilisateur) {
+		return service.modifyUtilisateur(id, newUtilisateur);
+    	
+    	
+    }
+    
+    
     
     @ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException e) {

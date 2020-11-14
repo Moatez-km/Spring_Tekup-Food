@@ -12,4 +12,5 @@ public interface UtilisateursService {
 	UtilisateursEntity getEntityById(long id);
 	UtilisateursEntity createUtilisateurs(UtilisateursEntity entity);
 	UtilisateursEntity  rechargeSolde(long id,UtilisateursEntity newEntity);
+	UtilisateursEntity modifyUtilisateur(long id ,UtilisateursEntity newEntity);
 }

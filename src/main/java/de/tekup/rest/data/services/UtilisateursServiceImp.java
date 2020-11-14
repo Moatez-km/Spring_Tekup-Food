@@ -55,7 +55,26 @@ public class UtilisateursServiceImp implements UtilisateursService{
 			throw new NoSuchElementException("Utilisateur with this Id is not found");
 		
 		
-		return oldUtilisateur;
+		return reposUtili.save(oldUtilisateur);
+	}
+
+	@Override
+	public UtilisateursEntity modifyUtilisateur(long id, UtilisateursEntity newUtilisateur) {
+		UtilisateursEntity oldUtilisateur=this.getEntityById(id);
+		if(newUtilisateur.getNom()!=null)
+			oldUtilisateur.setNom(newUtilisateur.getNom());
+		if(newUtilisateur.getPrenom()!=null)
+			oldUtilisateur.setPrenom(newUtilisateur.getPrenom());
+		if(newUtilisateur.getEmail()!=null)
+			oldUtilisateur.setEmail(newUtilisateur.getEmail());
+		if(newUtilisateur.getDate_naiss()!=null)
+			oldUtilisateur.setDate_naiss(newUtilisateur.getDate_naiss());
+		if(newUtilisateur.getPassword()!=null)
+			oldUtilisateur.setPassword(newUtilisateur.getPassword());
+			
+		
+		
+		return reposUtili.save(oldUtilisateur);
 	}
 
 	
