@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,7 +61,10 @@ public class UtilisateursRest {
     	
     	
     }
-    
+    @DeleteMapping ("delete/{id}")
+	public UtilisateursEntity deleteUtilisateur(@PathVariable("id")Long id) {
+		return service.deleteUtilisateur(id);
+    }
     
     
     @ExceptionHandler(NoSuchElementException.class)

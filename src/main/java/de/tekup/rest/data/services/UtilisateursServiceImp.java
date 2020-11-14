@@ -77,6 +77,13 @@ public class UtilisateursServiceImp implements UtilisateursService{
 		return reposUtili.save(oldUtilisateur);
 	}
 
+	@Override
+	public UtilisateursEntity deleteUtilisateur(long id) {
+		UtilisateursEntity entity=this.getEntityById(id);
+		reposUtili.deleteById(id);
+		return entity;
+	}
+
 	
 
 	
