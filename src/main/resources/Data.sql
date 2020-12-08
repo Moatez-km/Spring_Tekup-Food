@@ -1,1 +1,3 @@
-insert into utilisateurs (id, nom, prenom, date_naiss,email,password ) values (1, 'moatez', 'kamoun','1996-06-30', 'moatez.kamounn@gmail.com','0000');
+insert into utilisateurs (id, nom, prenom, date_naiss,email,password,solde,type ) values (1, 'moatez', 'kamoun','1996-06-30', 'moatez.kamounn@gmail.com','0000',100,'admin');
+insert into utilisateurs (id, nom, prenom, date_naiss,email,password,solde,type ) values (2, 'taz', 'kam','1999-08-30', 'taz.kam@gmail.com','xxxx',10,'client');
+insert into utilisateurs (id, nom, prenom, date_naiss,email,password,solde,type ) values (3, 'chaneb', 'chaneb','2000-01-10', 'chaneb@gmail.com','cccc',200,'partenaire');

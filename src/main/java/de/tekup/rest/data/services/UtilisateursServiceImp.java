@@ -71,6 +71,8 @@ public class UtilisateursServiceImp implements UtilisateursService{
 			oldUtilisateur.setDate_naiss(newUtilisateur.getDate_naiss());
 		if(newUtilisateur.getPassword()!=null)
 			oldUtilisateur.setPassword(newUtilisateur.getPassword());
+		if(newUtilisateur.getType()!=null)
+			oldUtilisateur.setType(newUtilisateur.getType());
 			
 		
 		

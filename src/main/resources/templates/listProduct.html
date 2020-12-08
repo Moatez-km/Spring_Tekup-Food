@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+  <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<h3 class="text-center">List of products</h3>
+<table class="table">
+
+<thead class="thead-dark">
+<tr>
+<th scope="col">Image</th>
+<th scope="col">Name</th>
+<th scope="col">Description</th>
+<th scope="col">Prix</th>
+<th scope="col">Quantity</th>
+
+
+</tr>
+</thead>
+<tbody>
+<div>
+<tr th:each="product: ${products}">
+<th scope="row"><img alt="" th:src="*{'data:image/jpg;base64,'+{product.image}}" style="width: 100px; height: 100px;">  </th>
+
+<td>[[*{product.name}]]
+<br>
+<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal" th:attr="data-target='#exampleModalCenter'+*{product.id}">Modifier Name</button>
+<td>[[*{product.description}]]
+<br>
+<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal" th:attr="data-target='#exampleModalCenter'+*{product.id}">Modifier Description</button>
+<td>[[*{product.prix}]]
+<br>
+<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal" th:attr="data-target='#exampleModalCenter'+*{product.id}">Modifier Prix</button>
+</td>
+<td>[[*{product.quantity}]]
+<br>
+<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal" th:attr="data-target='#exampleModalCenter'+*{product.id}">Modifier Quantity</button>
+
+<td><br><button type="button" class="btn btn-danger btn-sm mt-2">Delete</button></td>
+
+</tr>
+</div>
+</tbody>
+
+
+
+
+</table>
+</body>
+</html>

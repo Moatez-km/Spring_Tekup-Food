@@ -37,6 +37,7 @@ public class UtilisateursEntity {
 	private String password;
 	
 	private Double solde;
+	private String type;
 	
 	
 
