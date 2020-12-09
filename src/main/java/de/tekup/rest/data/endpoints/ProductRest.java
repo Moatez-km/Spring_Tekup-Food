@@ -1,6 +1,6 @@
 package de.tekup.rest.data.endpoints;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,8 @@ public class ProductRest {
 	private ProductRepository productRepo;
 	@Autowired
 	private ProductService productService ;
+	
+	
 	@GetMapping("/addProduct.html")
 	public String showAddProduct() {
 		return "/addProduct.html";

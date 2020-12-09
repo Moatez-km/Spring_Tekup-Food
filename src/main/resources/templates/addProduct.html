@@ -3,22 +3,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Products</title>
-<link href="C:\Users\Moatez\Desktop\boot\css\bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+  <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
 </head>
 <body>
 
 <h3 class="text-center">Add Product</h3>
 <form action="/addP" method="Post" enctype="multipart/form-data">
-<div class="form-group">
-<label>Product name:</label>
-<input type="text" name="pname" >
-<label>Product desc:</label>
-<input type="text" name="desc" >
-<label>Quantité:</label>
-<input type="text" name="quantity" >
-<label>Prix:</label>
-<input type="number" name="prix" >
-
+<div class="form-group  col-sm-3">
+<label >Product Name :</label>
+<input type="text" class="form-control" name="pname" placeholder="name">
+<label>Product Description:</label>
+<input type="text" class="form-control" name="desc" placeholder="Description">
+<label>Quantity :</label>
+<input type="number" class="form-control" name="quantity" placeholder="Quantity">
+<label>Price:</label>
+<input type="text" class="form-control" name="prix" placeholder="price">
+<br>
 <div class="custom-file mb-2">
 
 <input type="file" name="file" class="custom-file-input" >
@@ -31,6 +32,7 @@
 
 </form>
 
-<script type="text/javascript" src="C:\Users\Moatez\Desktop\boot\js\bootstrap.js"></script>
+
+
 </body>
 </html>
