@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +51,44 @@ public class ProductRest {
 		
 	}
 	
+	/*@GetMapping("/showFromForUpdate/{id}")
+	public String showFromForUpdate(@PathVariable(value = "id") long id,Model model) {
+		ProductEntity products=productService.getEntityById(id);
+		model.addAttribute("products", products);
+		
+		return "update_product";
+		
+		
+		
+	}*/
+	@PostMapping("/saveProduct")
+	public String saveProduct(@ModelAttribute("products") ProductEntity products) {
+		productService.saveProd(products);
+		return "redirect:/listProduct.html";
+		
+		
+	}
+	@GetMapping("/deleteProd/{id}")
+	public String deleteProduct(@PathVariable("id") Long id) {
+		
+		
+		productRepo.deleteById(id);
+		return "redirect:/listProduct.html";
+		
+		
+	}
 	
+	@PostMapping("/changeName")
+	public String changePname(@RequestParam("id") Long id, @RequestParam("name") String name) {
+		
+		
+		ProductEntity p =new ProductEntity();
+		p=productRepo.findById(id).get();
+		p.setName(name);
+		productRepo.save(p);
+		return "redirect:/listProduct.html";
+		
+		
+	} 
 
 }
