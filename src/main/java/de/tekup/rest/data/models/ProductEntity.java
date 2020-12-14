@@ -25,7 +25,7 @@ public class ProductEntity {
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
-	private String quantity;
+	private int quantity;
 	
 	
 	

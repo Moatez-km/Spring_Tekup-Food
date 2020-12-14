@@ -20,7 +20,7 @@ public class ProductServiceImp implements ProductService {
 	private ProductRepository productRepo;
 
 	@Override
-	public void saveProductToDB(MultipartFile file, String name, String description, Double prix, String quantity
+	public void saveProductToDB(MultipartFile file, String name, String description, Double prix, int quantity
 			) {
 		// TODO Auto-generated method stub
 		ProductEntity p=new ProductEntity();

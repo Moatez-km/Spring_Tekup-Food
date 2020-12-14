@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -32,102 +32,63 @@
 <tr th:each="product: ${products}">
 <th scope="row"><img alt="" th:src="*{'data:image/png;base64,'+{product.image}}" style="width: 80px; height: 80px;">  </th>
 
-<td><b>[[*{product.name}]]</b>
+ <td><b>[[*{product.name}]]</b>
 <br>
 
-   <!-- This is a button toggling the modal -->
-<button class="uk-button uk-button-primary uk-margin-small-right " type="button" th:attr="uk-toggle='target: #modal-example'+*{product.id}">Open</button>
-
-<!-- This is an anchor toggling the modal -->
-
-
-<!-- This is the modal -->
-<div th:id="*{'modal-example'+{product.id}}" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-    <form action="/changeName" method="Post" >
   
-        <label >Product id :</label>
-<input type="text" class="form-control" name="id" th:value="*{product.id}" >
-<label>New Product name:</label>
-<input type="text" class="form-control" name="name" >
 
-        <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="reset">Cancel</button>
-            <button class="uk-button uk-button-primary" type="submit">Save</button>
-        </p>
-    </div>
-</div>
-
-</form>
 </td>
 
 <td><b>[[*{product.description}]]</b>
 <br>
 
-   <!-- This is a button toggling the modal -->
-<button class="uk-button uk-button-primary uk-margin-small-right " type="button" uk-toggle="target: #modal-example">Open</button>
 
-<!-- This is an anchor toggling the modal -->
-
-
-<!-- This is the modal -->
-<div id="modal-example" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <h2 class="uk-modal-title">Headline</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Save</button>
-        </p>
-    </div>
-</div>
 
 <td><b>[[*{product.prix}]]</b>
 <br>
 
-   <!-- This is a button toggling the modal -->
-<button class="uk-button uk-button-primary uk-margin-small-right " type="button" uk-toggle="target: #modal-example">Open</button>
 
-<!-- This is an anchor toggling the modal -->
-
-
-<!-- This is the modal -->
-<div id="modal-example" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <h2 class="uk-modal-title">Headline</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Save</button>
-        </p>
-    </div>
-</div>
 
 </td>
 <td><b>[[*{product.quantity}]]</b>
-<br>
 
-   <!-- This is a button toggling the modal -->
-<button class="uk-button uk-button-primary uk-margin-small-right " type="button" uk-toggle="target: #modal-example">Open</button>
+
+</td>
+<td>
+
+ <!-- This is a button toggling the modal -->
+   
+<button class="uk-button uk-button-primary uk-margin-small-right " type="button" th:attr="uk-toggle='target: #modal-example'+*{product.id}">Update</button>
 
 <!-- This is an anchor toggling the modal -->
 
 
 <!-- This is the modal -->
-<div id="modal-example" uk-modal>
+
+<div th:id="*{'modal-example'+{product.id}}" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
-        <h2 class="uk-modal-title">Headline</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3>Update Your Product</h3>
+    <form action="/updateProd" method="Post" >
+  
+        <label >Product id :</label>
+<input type="text" class="form-control" name="id" th:value="*{product.id}" >
+<label>New Product name:</label>
+<input type="text" class="form-control" name="name" th:value="*{product.name} ">
+<label>New Product Description:</label>
+<input type="text" class="form-control" name="description" th:value="*{product.description}" >
+<label>New Product Price:</label>
+<input type="text" class="form-control" name="prix" th:value="*{product.prix}">
+<label>New Product quantity:</label>
+<input type="text" class="form-control" name="quantity" th:value="*{product.quantity} ">
+
         <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Save</button>
+            <button class="uk-button uk-button-default uk-modal-close" type="reset">Cancel</button>
+            <button class="uk-button uk-button-primary" type="submit">Save</button>
         </p>
+        </form>
     </div>
 </div>
 
-</td>
-<td>
-<br>
 <button type="button" class="btn btn-danger btn-md mt-2">Delete</button></td>
 
 </tr>

@@ -40,7 +40,7 @@ public class ProductRest {
 	
 	@PostMapping("/addP")
 	public String saveProduct(@RequestParam("file") MultipartFile file ,@RequestParam("pname") String name,
-			@RequestParam("prix") Double prix,@RequestParam("desc") String description,@RequestParam("quantity") String quantity) {
+			@RequestParam("prix") Double prix,@RequestParam("desc") String description,@RequestParam("quantity") int quantity) {
 		
 		productService.saveProductToDB(file, name, description, prix, quantity);
 		
@@ -85,6 +85,57 @@ public class ProductRest {
 		ProductEntity p =new ProductEntity();
 		p=productRepo.findById(id).get();
 		p.setName(name);
+		productRepo.save(p);
+		return "redirect:/listProduct.html";
+		
+		
+	} 
+	@PostMapping("/changeDesc")
+	public String changePdesc(@RequestParam("id") Long id, @RequestParam("description") String description) {
+		
+		
+		ProductEntity p =new ProductEntity();
+		p=productRepo.findById(id).get();
+		p.setDescription(description);
+		productRepo.save(p);
+		return "redirect:/listProduct.html";
+		
+		
+	} 
+	@PostMapping("/changePrix")
+	public String changePrix(@RequestParam("id") Long id, @RequestParam("prix") Double prix) {
+		
+		
+		ProductEntity p =new ProductEntity();
+		p=productRepo.findById(id).get();
+		p.setPrix(prix);
+		productRepo.save(p);
+		return "redirect:/listProduct.html";
+		
+		
+	} 
+	@PostMapping("/changeQuan")
+	public String changeQuan(@RequestParam("id") Long id, @RequestParam("quantity") int quantity) {
+		
+		
+		ProductEntity p =new ProductEntity();
+		p=productRepo.findById(id).get();
+		p.setQuantity(quantity);
+		productRepo.save(p);
+		return "redirect:/listProduct.html";
+		
+		
+	} 
+	@PostMapping("/updateProd")
+	public String changePdesc(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("prix") Double prix, @RequestParam("quantity") int quantity) {
+		
+		
+		ProductEntity p =new ProductEntity();
+		p=productRepo.findById(id).get();
+		p.setName(name);
+		p.setDescription(description);
+		p.setPrix(prix);
+		p.setQuantity(quantity);
 		productRepo.save(p);
 		return "redirect:/listProduct.html";
 		
