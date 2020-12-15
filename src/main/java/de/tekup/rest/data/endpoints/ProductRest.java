@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,54 +79,6 @@ public class ProductRest {
 		
 	}
 	
-	@PostMapping("/changeName")
-	public String changePname(@RequestParam("id") Long id, @RequestParam("name") String name) {
-		
-		
-		ProductEntity p =new ProductEntity();
-		p=productRepo.findById(id).get();
-		p.setName(name);
-		productRepo.save(p);
-		return "redirect:/listProduct.html";
-		
-		
-	} 
-	@PostMapping("/changeDesc")
-	public String changePdesc(@RequestParam("id") Long id, @RequestParam("description") String description) {
-		
-		
-		ProductEntity p =new ProductEntity();
-		p=productRepo.findById(id).get();
-		p.setDescription(description);
-		productRepo.save(p);
-		return "redirect:/listProduct.html";
-		
-		
-	} 
-	@PostMapping("/changePrix")
-	public String changePrix(@RequestParam("id") Long id, @RequestParam("prix") Double prix) {
-		
-		
-		ProductEntity p =new ProductEntity();
-		p=productRepo.findById(id).get();
-		p.setPrix(prix);
-		productRepo.save(p);
-		return "redirect:/listProduct.html";
-		
-		
-	} 
-	@PostMapping("/changeQuan")
-	public String changeQuan(@RequestParam("id") Long id, @RequestParam("quantity") int quantity) {
-		
-		
-		ProductEntity p =new ProductEntity();
-		p=productRepo.findById(id).get();
-		p.setQuantity(quantity);
-		productRepo.save(p);
-		return "redirect:/listProduct.html";
-		
-		
-	} 
 	@PostMapping("/updateProd")
 	public String changePdesc(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("prix") Double prix, @RequestParam("quantity") int quantity) {
 		

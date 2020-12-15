@@ -7,10 +7,13 @@
   <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
 </head>
 <body>
-
+<div class="row">
+<div class="col-md-6 mx-auto">
+<div class="card">
+<div class="card-body">
 <h3 class="text-center">Add Product</h3>
 <form action="/addP" method="Post" enctype="multipart/form-data">
-<div class="form-group  col-sm-3">
+<div class="form-group  ">
 <label >Product Name :</label>
 <input type="text" class="form-control" name="pname" placeholder="name">
 <label>Product Description:</label>
@@ -31,8 +34,8 @@
 
 
 </form>
-
-
-
+</div>
+</div></div>
+</div>
 </body>
 </html>
