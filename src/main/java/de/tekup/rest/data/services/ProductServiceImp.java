@@ -1,7 +1,7 @@
 package de.tekup.rest.data.services;
 
 import java.io.IOException;
-import java.time.LocalDate;
+
 import java.util.Base64;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import de.tekup.rest.data.models.ProductEntity;
-import de.tekup.rest.data.models.UtilisateursEntity;
+
 import de.tekup.rest.data.repositories.ProductRepository;
 @Service
 public class ProductServiceImp implements ProductService {
@@ -66,3 +66,4 @@ public class ProductServiceImp implements ProductService {
 	
 
 }
+

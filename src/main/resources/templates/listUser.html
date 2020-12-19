@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User management system</title>
+ <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+  <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container my-2">
+<div align="center">
+<h1>Users List</h1>
+<a th:href = "@{/showNewUserForm}" class="btn btn-primary btn-sm mb-3">Add New Users </a>
+<table border="1" class="table table-striped table-responsive-md">
+<thead class="thead-dark">
+
+
+<th>Nom</th>
+<th>Prenom</th>
+<th>Email</th>
+<th>Password</th>
+<th>Solde</th>
+<th>Type</th>
+<th>Action</th>
+
+
+</thead>
+<tbody>
+
+<tr th:each="user : ${listUsers}">
+<td th:text="${user.nom}"></td>
+<td th:text="${user.prenom}"></td>
+<td th:text="${user.email}"></td>
+<td th:text="${user.password}"></td>
+<td th:text="${user.solde}"></td>
+<td th:text="${user.type}"></td>
+<td><a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-primary">update</a>
+<a th:href="@{/deleteById/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</body>
+</html>

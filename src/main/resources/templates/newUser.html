@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User management system</title>
+<link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+  <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+</head>
+<body>
+<br>
+<div class="row">
+<div class="col-md-6 mx-auto">
+<div class="card">
+<div class="card-body">
+<h1 class="text-center">User Management System </h1>
+<form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST" class="form-group  ">
+  <label >First Name:</label>
+<input type="text" class="form-control "  th:field="*{nom}" placeholder="User First Name">
+<label >Last Name:</label>
+<input type="text" class="form-control "  th:field="*{prenom}" placeholder="User Last Name">
+<label >Email:</label>
+<input type="email" class="form-control "  th:field="*{email}" placeholder="User Email">
+<label >Password:</label>
+<input type="password" class="form-control "  th:field="*{password}" placeholder="User Password">
+<label >Sold:</label>
+<input type="number" class="form-control "  th:field="*{solde}" placeholder="User Solde">
+<label >Type:</label>
+<input type="text" class="form-control "  th:field="*{type}" placeholder="User Type">
+
+<button type="submit" class="btn btn-info col-2">Save Users</button>
+
+</form>
+
+<a th:href ="@{/users}">Back To Users List</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
