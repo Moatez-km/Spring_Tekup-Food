@@ -11,5 +11,6 @@ public interface UserService {
 	void saveUser(User user);
 	User getUserById(Long id);
 	void deleteUserById(Long id);
+	List<User> findByKeyword(String keyword);
 
 }

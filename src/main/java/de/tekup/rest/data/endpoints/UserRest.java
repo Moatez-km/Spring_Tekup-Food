@@ -11,14 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import de.tekup.rest.data.models.User;
 import de.tekup.rest.data.services.UserService;
 
+
 @Controller
 public class UserRest {
 	@Autowired
 	private UserService UserService;
 	
 	@GetMapping("/users")
-	public String viewHomePage(Model model) {
-		model.addAttribute("listUsers", UserService.getAllUsers());
+	public String viewHomePage(Model model,String keyword) {
+		if(keyword!=null) {
+			model.addAttribute("listUsers", UserService.findByKeyword(keyword));
+		}else {
+			model.addAttribute("listUsers", UserService.getAllUsers());
+		}
+		
 		return "listUser";
 		}
 	@GetMapping("/showNewUserForm")

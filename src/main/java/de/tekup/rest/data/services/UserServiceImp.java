@@ -49,7 +49,13 @@ public class UserServiceImp implements UserService{
 		
 	}
 
-	
+	public List<User> findByKeyword(String keyword){
+		return UserRepository.findByKeyword(keyword);
+		
+		
+		
+		
+	}
 	
 
 }
