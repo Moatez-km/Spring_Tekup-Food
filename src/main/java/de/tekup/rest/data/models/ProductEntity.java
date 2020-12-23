@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -26,6 +27,8 @@ public class ProductEntity {
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
 	private int quantity;
+	@ManyToOne
+	private User user;
 	
 	
 	

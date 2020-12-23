@@ -56,6 +56,12 @@ public class UserServiceImp implements UserService{
 		
 		
 	}
+
+	@Override
+	public User getUserByEmailAndPassword(String email,String password) {
+		// TODO Auto-generated method stub
+		return UserRepository.findUserByEmailAndPassword(email, password);
+	}
 	
 
 }

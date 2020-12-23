@@ -1,12 +1,16 @@
 package de.tekup.rest.data.endpoints;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import de.tekup.rest.data.models.User;
 import de.tekup.rest.data.services.UserService;
@@ -16,6 +20,11 @@ import de.tekup.rest.data.services.UserService;
 public class UserRest {
 	@Autowired
 	private UserService UserService;
+	@GetMapping("/login")
+	public String showLoginPage() {
+		return "/login.html";
+		
+	}
 	
 	@GetMapping("/users")
 	public String viewHomePage(Model model,String keyword) {
@@ -60,5 +69,25 @@ public class UserRest {
 		
 		
 	}
+	@PostMapping("/login")
+	public String userbyemail(@RequestParam("email") String email, @RequestParam("password")String password,HttpSession  session ,Model model) {
+		
+		User user=UserService.getUserByEmailAndPassword(email, password);
+		System.out.println(user);
+		if(user!=null) {
+			if(user.getType().equals("admin")) {
+				return "redirect:/users";
+			}if(user.getType().equals("partenaire")) {
+				model.addAttribute("users", user);
+			
+				session.setAttribute("users", user);
+				return "/listProduct.html";
+			}
+			
+		}
+		return "redirect:/login";
+		
+	} 
+	
 
 }

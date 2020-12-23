@@ -41,9 +41,9 @@ public class ProductRest {
 	
 	@PostMapping("/addP")
 	public String saveProduct(@RequestParam("file") MultipartFile file ,@RequestParam("pname") String name,
-			@RequestParam("prix") Double prix,@RequestParam("desc") String description,@RequestParam("quantity") int quantity) {
+			@RequestParam("prix") Double prix,@RequestParam("desc") String description,@RequestParam("quantity") int quantity,@RequestParam("idU") long idu) {
 		
-		productService.saveProductToDB(file, name, description, prix, quantity);
+		productService.saveProductToDB(file, name, description, prix, quantity,idu);
 		
 		
 		return "redirect:/listProduct.html";

@@ -15,5 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	
 	@Query(value = "select * from User u where u.nom like %:keyword% or u.prenom like %:keyword%",nativeQuery = true)
 	List<User> findByKeyword(@Param("keyword") String keyword);
+	
+	User findUserByEmailAndPassword(String email,String password);
 
 }

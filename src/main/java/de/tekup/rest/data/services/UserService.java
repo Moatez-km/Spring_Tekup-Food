@@ -12,5 +12,6 @@ public interface UserService {
 	User getUserById(Long id);
 	void deleteUserById(Long id);
 	List<User> findByKeyword(String keyword);
+	User getUserByEmailAndPassword(String email,String password);
 
 }

@@ -14,13 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 import de.tekup.rest.data.models.ProductEntity;
 
 import de.tekup.rest.data.repositories.ProductRepository;
+import de.tekup.rest.data.repositories.UserRepository;
 @Service
 public class ProductServiceImp implements ProductService {
 	@Autowired
 	private ProductRepository productRepo;
+	@Autowired
+	private UserRepository UserRepository;
 
 	@Override
-	public void saveProductToDB(MultipartFile file, String name, String description, Double prix, int quantity
+	public void saveProductToDB(MultipartFile file, String name, String description, Double prix, int quantity,long idu
 			) {
 		// TODO Auto-generated method stub
 		ProductEntity p=new ProductEntity();
@@ -40,6 +43,7 @@ public class ProductServiceImp implements ProductService {
 		p.setQuantity(quantity);
 		
 		p.setName(name);
+		p.setUser(UserRepository.findById(idu).get());
 		
 		productRepo.save(p);
 	}
