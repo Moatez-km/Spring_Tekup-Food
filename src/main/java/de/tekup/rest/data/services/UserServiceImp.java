@@ -1,12 +1,14 @@
 package de.tekup.rest.data.services;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.tekup.rest.data.models.User;
+
 import de.tekup.rest.data.repositories.UserRepository;
 @Service
 public class UserServiceImp implements UserService{
@@ -62,6 +64,9 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return UserRepository.findUserByEmailAndPassword(email, password);
 	}
+
+	
+
 	
 
 }

@@ -6,6 +6,7 @@ import de.tekup.rest.data.models.User;
 
 
 
+
 public interface UserService {
 	List<User> getAllUsers();
 	void saveUser(User user);
@@ -13,5 +14,6 @@ public interface UserService {
 	void deleteUserById(Long id);
 	List<User> findByKeyword(String keyword);
 	User getUserByEmailAndPassword(String email,String password);
+	
 
 }

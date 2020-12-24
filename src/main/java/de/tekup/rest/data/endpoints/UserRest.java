@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import de.tekup.rest.data.models.User;
+import de.tekup.rest.data.repositories.UserRepository;
 import de.tekup.rest.data.services.UserService;
 
 
@@ -20,6 +24,8 @@ import de.tekup.rest.data.services.UserService;
 public class UserRest {
 	@Autowired
 	private UserService UserService;
+	@Autowired
+	private UserRepository UserRepository;
 	@GetMapping("/login")
 	public String showLoginPage() {
 		return "/login.html";
@@ -60,6 +66,22 @@ public class UserRest {
 		return "update_user";
 		
 		}
+	@PostMapping("/updateSold")
+	public String changeSold(@RequestParam("id") Long id, @RequestParam("sold") Double solde) {
+		
+		Double s=(double) 0;
+		User p =new User();
+		p=UserRepository.findById(id).get();
+		s=p.getSolde()+solde;
+		p.setSolde(s);
+		UserRepository.save(p);
+		
+		
+		
+		return "redirect:/users";
+		
+		
+	} 
 	@GetMapping("/deleteById/{id}")
 	public String deleteById(@PathVariable(value = "id") long id) {
 		this.UserService.deleteUserById(id);

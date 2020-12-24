@@ -101,26 +101,26 @@ font-family: "Montserrat", sans-serif;
 
 }
 .input1 {
-  width: 10%;
+  width: 50%;
   padding: 4px 20px;
   margin: 8px 5px;
   box-sizing: border-box;
   border: 2px solid #0088a9;
   border-radius: 4px;
-  background-color: rgba(226,226,226);
+  background-color: #1e1e26;
   color:rgba(226,226,226);
 
 
 }
 .input2 {
-  width: 80%;
-  padding: 12px 20px;
+  width: 10%;
+  padding: 4px 20px;
   margin: 10px 10px;
   box-sizing: border-box;
   border: 2px solid #0088a9;
   border-radius: 4px;
-  background-color: #1e1e26;
-  color:rgba(226,226,226);
+  color: #1e1e26;
+  background-color:rgba(226,226,226);
 }
 .sub{
   width: 20%;
@@ -232,7 +232,7 @@ font-family: "Montserrat", sans-serif;
 <a th:href = "@{/showNewUserForm}" class="btn btn-primary btn-sm mb-3 ">Add New Users </a>
 <form action="#" th:action="@{/users}" method="get">
   
-<input id="txtsearch" type="text" name="keyword" class="input1">
+<input id="txtsearch" type="text" name="keyword" class="input2">
 
 <button type="submit"   class="btn btn-primary">Go</button>
 
@@ -263,8 +263,39 @@ font-family: "Montserrat", sans-serif;
 <td class="lab" th:text="${user.password}"></td>
 <td class="lab" th:text="${user.solde}"></td>
 <td class="lab" th:text="${user.type}"></td>
-<td><a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-primary ">update</a>
-<a th:href="@{/deleteById/{id}(id=${user.id})}" class="btn btn-danger ">Delete</a></td>
+<td><a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-primary ">UPDATE</a>
+<a th:href="@{/deleteById/{id}(id=${user.id})}" class="btn btn-danger ">DELETE</a>
+
+ <!-- This is a button toggling the modal -->
+   
+<button class="uk-button uk-button-secondary uk-margin-small-right lab2 " type="button" th:attr="uk-toggle='target: #modal-example'+*{user.id}" >Sold</button>
+
+<!-- This is an anchor toggling the modal -->
+
+
+<!-- This is the modal -->
+
+<div th:id="*{'modal-example'+{user.id}}" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body blackdiv ">
+    <h3 class="lab2 text-center">Recharge Your Sold</h3>
+    <form action="/updateSold" method="Post" >
+  <center>
+        <label class="lab2" >user id :</label>
+<input type="hidden" class="form-control input1" name="id" th:value="*{user.id}">
+<label class="lab2">Sold:</label>
+<input type="text" class="form-control input1" name="sold"  >
+
+</center> 
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close lab2" type="reset">Cancel</button>
+            <button class="uk-button uk-button-primary lab2" type="submit">Save</button>
+        </p>
+        </form>
+    </div>
+</div>
+
+
+</td>
 
 
 </tr>
