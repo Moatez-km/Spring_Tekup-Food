@@ -8,6 +8,7 @@
    <link rel="stylesheet" th:href="@{/uikit.min.css}">
   <script type="text/javascript" th:src="@{/uikit.min.js}"></script>
   <link rel="stylesheet" th:href="@{/style.css}">
+   <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
   
 <style> 
 .titre1 {
@@ -192,10 +193,19 @@ font-family: "Montserrat", sans-serif;
 .logo :hover{
     color: #0088a9;
 }
+.lab2{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #1e1e26;
+  text-align: justify;
+  text-justify: inter-word;
+  
+
+}
 </style>
 </head>
 
-<body class="blackdiv">
+<body >
 <header>
 
 <nav>
@@ -209,6 +219,7 @@ font-family: "Montserrat", sans-serif;
 <li><a href="">Menu</a></li>
 <li><a href="index.php">About</a></li>
 <li><a href="index.php">Contact</a></li>
+<li> <a th:href="@{/log}"><h3 class="symbol1" ><i class="fa fa-sign-out" ></i></h3></a></li>
 
 
 
@@ -216,9 +227,9 @@ font-family: "Montserrat", sans-serif;
 </nav>
 
 </header>
-<h3 class="text-center lab">List of products</h3>
+<h3 class="text-center lab2">List of products</h3>
 <a href="addProduct.html"><button type="button" class="btn btn-success btn-sm mt-2 lab">Add new Product</button></a>
-<table class="table blackdiv" >
+<table class="table " >
 
 <thead class="thead-dark lab">
 <tr>
@@ -238,29 +249,29 @@ font-family: "Montserrat", sans-serif;
 <tr th:each="product: ${products}">
 <th scope="row"><img alt="" th:src="*{'data:image/png;base64,'+{product.image}}" style="width: 80px; height: 80px;">  </th>
 
- <td class="lab"><b>[[*{product.name}]]</b>
+ <td class="lab2"><b>[[*{product.name}]]</b>
 <br>
 
   
 
 </td>
 
-<td class="lab"><b>[[*{product.description}]]</b>
+<td class="lab2"><b>[[*{product.description}]]</b>
 <br>
 
 
 
-<td class="lab"><b>[[*{product.prix}]]</b>
+<td class="lab2"><b>[[*{product.prix}]]</b>
 <br>
 
 
 
 </td>
-<td class="lab"><b>[[*{product.quantity}]]</b>
+<td class="lab2"><b>[[*{product.quantity}]]</b>
 
 
 </td>
-<td class="lab"><b>[[*{product.user.nom}]]</b>
+<td class="lab2"><b>[[*{product.user.nom}]]</b>
 
 
 </td>

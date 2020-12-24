@@ -25,7 +25,11 @@ public class ProductRest {
 	@Autowired
 	private ProductService productService ;
 	
-	
+	@GetMapping("/log")
+	public String showLogin2Page() {
+		return "/login.html";
+		
+	}
 	@GetMapping("/addProduct.html")
 	public String showAddProduct() {
 		return "/addProduct.html";
