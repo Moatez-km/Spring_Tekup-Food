@@ -5,10 +5,13 @@
 <title>User management system</title>
  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
   <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+   <script type="text/javascript" th:src="@{/bootstrap.bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.bundle.js}"></script>
    <link rel="stylesheet" th:href="@{/uikit.min.css}">
   <script type="text/javascript" th:src="@{/uikit.min.js}"></script>
   <link rel="stylesheet" th:href="@{/style.css}">
        <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
+    
   <style> 
 .titre1 {
   width: 100px;
@@ -201,6 +204,76 @@ font-family: "Montserrat", sans-serif;
   
 
 }
+ 
+
+.dropdown {
+  height: 4vh;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+.projects ul,
+.products ul {
+  margin-top: 10px;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background: #1e1e26;
+  left: 0px;
+  list-style: none;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+.projects li,
+.products li {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.projects a,
+.products a {
+  color: white;
+  text-decoration: none;
+  background-color: #1e1e26;
+}
+
+.dropdown button,
+.home {
+  background: none;
+  text-decoration: none;
+  border: none;
+  color: yellow;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.projects button:focus + ul,
+.products button:focus + ul {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
+.symbol1:hover{
+      color: #4267b2;
+     
+  }
 </style>
 </head>
 <body >
@@ -217,9 +290,17 @@ font-family: "Montserrat", sans-serif;
 <li><a href="">Menu</a></li>
 <li><a href="index.php">About</a></li>
 <li><a href="index.php">Contact</a></li>
-<li> <a th:href="@{/login}"><h3 class="symbol1" ><i class="fa fa-sign-out" ></i></h3></a></li>
-
-
+<li>
+<div class="dropdown ">
+        
+        <div class="projects ">
+          <button class="lab btn btn-info text-center" th:text="'Sold '+${session.sold} +'DT'" ></button>
+          
+        </div>
+        
+      </div>
+      </li>
+<li> <a th:href="@{/login}"><h3 class="symbol1" ><i class="fa fa-sign-out" ></i></h3></a></li> 
 
 </ul>
 </nav>
@@ -255,6 +336,7 @@ font-family: "Montserrat", sans-serif;
 </thead>
 <tbody>
 
+
 <tr th:each="user : ${listUsers}">
 <td class="lab" th:text="${user.id}"></td>
 <td  class="lab" th:text="${user.nom}"></td>
@@ -280,7 +362,7 @@ font-family: "Montserrat", sans-serif;
     <h3 class="lab2 text-center">Recharge Your Sold</h3>
     <form action="/updateSold" method="Post" >
   <center>
-        <label class="lab2" >user id :</label>
+       
 <input type="hidden" class="form-control input1" name="id" th:value="*{user.id}">
 <label class="lab2">Sold:</label>
 <input type="text" class="form-control input1" name="sold"  >

@@ -32,12 +32,15 @@ public class UserRest {
 		
 	}
 	
+	
 	@GetMapping("/users")
 	public String viewHomePage(Model model,String keyword) {
+		
 		if(keyword!=null) {
 			model.addAttribute("listUsers", UserService.findByKeyword(keyword));
 		}else {
 			model.addAttribute("listUsers", UserService.getAllUsers());
+			
 		}
 		
 		return "listUser";
@@ -95,13 +98,17 @@ public class UserRest {
 	public String userbyemail(@RequestParam("email") String email, @RequestParam("password")String password,HttpSession  session ,Model model) {
 		
 		User user=UserService.getUserByEmailAndPassword(email, password);
-		System.out.println(user);
+		
 		if(user!=null) {
 			if(user.getType().equals("admin")) {
+				
+				session.setAttribute("sold",user.getSolde());
+				
 				return "redirect:/users";
 			}if(user.getType().equals("partenaire")) {
 				model.addAttribute("users", user);
 			
+				session.setAttribute("sold",user.getSolde());
 				session.setAttribute("users", user);
 				return "/listProduct.html";
 			}
