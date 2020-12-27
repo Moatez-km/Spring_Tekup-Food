@@ -42,6 +42,14 @@ public class ProductRest {
 		return "/listProduct.html";
 		
 	}
+	@GetMapping("/menu")
+	public String showmenuPage(Model model) {
+		List<ProductEntity> produc2 = productRepo.findAll();
+		model.addAttribute("product", produc2);
+		return "/menu.html";
+		
+	}
+	
 	
 	@PostMapping("/addP")
 	public String saveProduct(@RequestParam("file") MultipartFile file ,@RequestParam("pname") String name,
@@ -55,6 +63,7 @@ public class ProductRest {
 		
 		
 	}
+	
 	
 	/*@GetMapping("/showFromForUpdate/{id}")
 	public String showFromForUpdate(@PathVariable(value = "id") long id,Model model) {

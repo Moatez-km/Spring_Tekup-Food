@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+ <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-comptible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" th:href="@{/style.css}">
+       <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
+    
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
   <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
    <link rel="stylesheet" th:href="@{/uikit.min.css}">
   <script type="text/javascript" th:src="@{/uikit.min.js}"></script>
-  <link rel="stylesheet" th:href="@{/style.css}">
-   <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
-  
-<style> 
+   
+   
+    <title>Login</title>
+  <style> 
 .titre1 {
   width: 100px;
   height: 100px;
@@ -37,7 +40,7 @@
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 .blackdiv{
-  background-color: #1e1e26;
+   background-image: url("./image/m8.jpg");
 }
 .symbol1{
       color: white;
@@ -100,6 +103,23 @@ font-family: "Montserrat", sans-serif;
   text-justify: inter-word;
   
 
+}
+ .lab3{
+  font-family: "Montserrat", sans-serif;
+
+  color:rgba(226,226,226);
+  text-align: justify;
+  text-justify: inter-word;
+  
+
+}
+.desc{
+font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+color: #0088a9;
+ text-align: justify;
+  text-justify: inter-word;
+  
 }
 .input1 {
   width: 80%;
@@ -266,10 +286,61 @@ font-family: "Montserrat", sans-serif;
   pointer-events: all;
   transform: translateY(0px);
 }
+.parallax {
+  background-image: url("./image/m8.jpg");
+  min-height: 500px; 
+  max-height: 3000px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #24252A;
+    font-family: "Montserrat", sans-serif;
+ 
+ }
+
+.logo {
+    color: rgba(226,226,226);
+    text-transform: uppercase;
+    initial-letter: 3px;
+    font-size: 20px;
+    margin-right: 1px; 
+}
+.logo :hover{
+    color: #0088a9;
+}
+
+.nav_links{
+    display: flex;
+    justify-content: space-around;
+    width: 40%
+
+}
+.nav_links a {
+    color: rgba(226,226,226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+   
+}
+.nav_links a:hover{
+    color: #0088a9;
+}
+.nav_links li {
+    
+    list-style: none;
+}
+
 </style>
 </head>
-
-<body >
+<body class="blackdiv">
 <header>
 
 <nav>
@@ -301,60 +372,42 @@ font-family: "Montserrat", sans-serif;
 </nav>
 
 </header>
-<h3 class="text-center lab2">List of products</h3>
 
-<a th:href="@{/addProduct.html}" class="btn btn-success btn-sm mt-2 lab">Add new Product</a>
-<table class="table " >
+<h1 class="text-center  desc">" You Don't need a silver fork to eat good food "</h1>
+<div class="parallax">
 
-<thead class="thead-dark lab">
+<table class="table "  border="0">
+
+<thead class=" lab">
 <tr>
-<th scope="col">Image</th>
-<th scope="col">Name</th>
-<th scope="col">Description</th>
-<th scope="col">Price</th>
-<th scope="col">Quantity</th>
-<th scope="col"> Partenaire </th>
-<th scope="col">Actions</th>
+<th scope="col" class="text-center">Meals</th>
+<th scope="col">More Informations</th>
+
+<th scope="col">Check Your Command</th>
 
 
 </tr>
 </thead>
 <tbody >
 
-<tr th:each="product: ${products}">
-<th scope="row"><img alt="" th:src="*{'data:image/png;base64,'+{product.image}}" style="width: 80px; height: 80px;">  </th>
+<tr th:each="product: ${product}">
+<th scope="row" class="text-center"><img alt="" th:src="*{'data:image/png;base64,'+{product.image}}" style="width: 120px; height: 100px;"> <br>
+<b class=" desc">[[*{product.name}]]</b>
+ </th>
 
- <td class="lab2"><b>[[*{product.name}]]</b>
+ <td class="lab3" >
 <br>
-
-  
-
-</td>
-
-<td class="lab2"><b>[[*{product.description}]]</b>
+<b class="desc"><span>ingredients  : </span></b>[[*{product.description}]]
 <br>
-
-
-
-<td class="lab2"><b>[[*{product.prix}]]</b>
-<br>
-
-
-
+ <b class="desc"><span>Price  :  </span></b>[[*{product.prix}]]<span> DT </span>
+ <br>
+<b class="desc"> <span>Food By  : </span></b>[[*{product.user.nom}]]
 </td>
-<td class="lab2"><b>[[*{product.quantity}]]</b>
 
-
-</td>
-<td class="lab2"><b>[[*{product.user.nom}]]</b>
-
-
-</td>
-<td>
-
- <!-- This is a button toggling the modal -->
-   
-<button class="uk-button uk-button-primary uk-margin-small-right lab " type="button" th:attr="uk-toggle='target: #modal-example'+*{product.id}" >Update</button>
+<td class="lab"> <!-- This is a button toggling the modal -->
+  <br>
+ 
+<button class="uk-button uk-button-primary uk-margin-small-right lab " type="button" th:attr="uk-toggle='target: #modal-example'+*{product.id}" >Add Your Command</button>
 
 <!-- This is an anchor toggling the modal -->
 
@@ -385,7 +438,9 @@ font-family: "Montserrat", sans-serif;
     </div>
 </div>
 
-<a th:href="@{/deleteProd/{id}(id=${product.id})}" class="uk-button uk-button-danger uk-margin-small-right lab">Delete</a></td>
+
+
+
 
 
 </tr>
@@ -398,5 +453,29 @@ font-family: "Montserrat", sans-serif;
 
 </table>
 
-</body>
+</div>
+<!--  
+    <div class="card" th:each="product: ${product}">
+    <center>
+    <img th:src="*{'data:image/png;base64,'+{product.image}}" >
+    
+   
+    <div class="container1">
+    <p th:text="${product.name}"></p>
+    <br>
+    <p> </p>
+    
+    <button class="sub">
+    <a href="#">Commander</a>
+   
+    </button>
+    </div>
+    </center>
+    </div>
+    <br>
+    <br>
+   
+        -->   
+           
+    </body>
 </html>

@@ -1,5 +1,7 @@
 package de.tekup.rest.data.endpoints;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import de.tekup.rest.data.models.ProductEntity;
 import de.tekup.rest.data.models.User;
+import de.tekup.rest.data.repositories.ProductRepository;
 import de.tekup.rest.data.repositories.UserRepository;
 import de.tekup.rest.data.services.UserService;
 
@@ -26,6 +29,8 @@ public class UserRest {
 	private UserService UserService;
 	@Autowired
 	private UserRepository UserRepository;
+	@Autowired
+	private ProductRepository productRepo;
 	@GetMapping("/login")
 	public String showLoginPage() {
 		return "/login.html";
@@ -111,6 +116,10 @@ public class UserRest {
 				session.setAttribute("sold",user.getSolde());
 				session.setAttribute("users", user);
 				return "/listProduct.html";
+			}if(user.getType().equals("client")) {
+				session.setAttribute("sold",user.getSolde());
+				
+				return "redirect:/menu";
 			}
 			
 		}

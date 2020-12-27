@@ -286,9 +286,9 @@ font-family: "Montserrat", sans-serif;
     <h4 class="titre lab2"><b>TEK-UP FOOD</b> </h4>
 </div>
 <ul class="nav_links">
-<li><a href="index.php">Home</a></li>
+<li><a th:href="@{/}">Home</a></li>
 <li><a href="">Menu</a></li>
-<li><a href="index.php">About</a></li>
+<li><a th:href="@{/}">About</a></li>
 <li><a href="index.php">Contact</a></li>
 <li>
 <div class="dropdown ">
@@ -304,7 +304,7 @@ font-family: "Montserrat", sans-serif;
 
 </ul>
 </nav>
-
+<!-- <span th:text="${#dates.format(#dates.createNow(), 'dd MMM YYYY hh:mm')}"></span> -->
 </header>
 
 <div align="center">
