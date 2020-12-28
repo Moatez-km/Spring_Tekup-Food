@@ -1,6 +1,8 @@
 package de.tekup.rest.data.endpoints;
 
-import java.util.List;
+
+
+
 
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-import de.tekup.rest.data.models.ProductEntity;
+
 import de.tekup.rest.data.models.User;
-import de.tekup.rest.data.repositories.ProductRepository;
+
 import de.tekup.rest.data.repositories.UserRepository;
 import de.tekup.rest.data.services.UserService;
 
@@ -29,14 +31,16 @@ public class UserRest {
 	private UserService UserService;
 	@Autowired
 	private UserRepository UserRepository;
-	@Autowired
-	private ProductRepository productRepo;
+	
+	
 	@GetMapping("/login")
 	public String showLoginPage() {
 		return "/login.html";
 		
 	}
 	
+	
+		
 	
 	@GetMapping("/users")
 	public String viewHomePage(Model model,String keyword) {
@@ -107,18 +111,19 @@ public class UserRest {
 		if(user!=null) {
 			if(user.getType().equals("admin")) {
 				
-				session.setAttribute("sold",user.getSolde());
+				session.setAttribute("sold",user.getNom());
 				
 				return "redirect:/users";
 			}if(user.getType().equals("partenaire")) {
 				model.addAttribute("users", user);
 			
-				session.setAttribute("sold",user.getSolde());
+				session.setAttribute("sold",user.getNom());
 				session.setAttribute("users", user);
 				return "/listProduct.html";
 			}if(user.getType().equals("client")) {
+				session.setAttribute("id",user.getId());
 				session.setAttribute("sold",user.getSolde());
-				
+				session.setAttribute("email",user.getEmail());
 				return "redirect:/menu";
 			}
 			

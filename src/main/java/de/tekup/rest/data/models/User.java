@@ -36,5 +36,8 @@ public class User {
 	private String type;
 	@OneToMany(mappedBy = "user")
 	private List<ProductEntity> produit;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Commande> commande;
 
 }
