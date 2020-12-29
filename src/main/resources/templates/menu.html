@@ -421,11 +421,11 @@ nav{
   <center>
         
 <input type="hidden" class="form-control input1" name="id" th:value="*{product.id}" >
-<label class="lab"> Product name:</label>
+<label class="lab"> Product name :</label>
 <input type="text" class="form-control input1" name="nom_prod" th:value="*{product.name} ">
-<label class="lab">Product Description:</label>
+<label class="lab">Product Description :</label>
 <input type="text" class="form-control input1" name="desc" th:value="*{product.description}" >
-
+<label class="lab">Product Price :</label>
 <input type="text" class="form-control input1" name="montant" th:value="*{product.prix}" >
 <input type="hidden" class="form-control input1" name="email_usr" th:value="${session.email}">
 <input type="hidden" class="form-control input1" name="nom_part" th:value="*{product.user.nom}" >
