@@ -431,7 +431,7 @@ nav{
 <input type="hidden" class="form-control input1" name="nom_part" th:value="*{product.user.nom}" >
 
 <input type="hidden" class="form-control input1" name="date_cmd" th:value="${#dates.format(#dates.createNow(), 'dd MMM YYYY hh:mm')}">
-<input type="hidden" class="form-control" name="idu" th:value="${session.id}">
+<input type="hidden" class="form-control" name="idu" th:value="${session.users.id}">
 </center> 
         <p class="uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close lab" type="reset">Cancel</button>

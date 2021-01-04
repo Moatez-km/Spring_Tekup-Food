@@ -7,23 +7,24 @@ import org.springframework.stereotype.Service;
 
 import de.tekup.rest.data.models.Commande;
 import de.tekup.rest.data.models.User;
-import de.tekup.rest.data.repositories.CommandeRepositories;
+
+import de.tekup.rest.data.repositories.CommandeRepository;
 import de.tekup.rest.data.repositories.UserRepository;
 @Service
 public class CommandeServiceImp implements CommandService{
 	@Autowired
-	CommandeRepositories cmdRepo;
+	CommandeRepository cmdRepo;
 	@Autowired
 	private UserRepository UserRepository;
 
 	@Override
-	public void saveCommandToDB(String nom_prod, String desc, Double montant, String email_usr, String date_cmd,
+	public void saveCommandToDB(String nom_prod, String desco, Double montant, String email_usr, String date_cmd,
 			String nom_part,long idu) {
 		// TODO Auto-generated method stub
 		
 		Commande c=new Commande();
 		c.setNom_prod(nom_prod);
-		c.setDesc(desc);
+		c.setDesco(desco);
 		c.setMontant(montant);
 		c.setNom_part(nom_part);
 		c.setEmail_usr(email_usr);

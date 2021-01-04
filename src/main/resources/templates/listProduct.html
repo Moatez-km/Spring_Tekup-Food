@@ -322,6 +322,7 @@ font-family: "Montserrat", sans-serif;
 <tbody >
 
 <tr th:each="product: ${products}">
+<div th:if="${product.user.nom}==${session.sold}">
 <th scope="row"><img alt="" th:src="*{'data:image/png;base64,'+{product.image}}" style="width: 80px; height: 80px;">  </th>
 
  <td class="lab2"><b>[[*{product.name}]]</b>
@@ -387,7 +388,7 @@ font-family: "Montserrat", sans-serif;
 
 <a th:href="@{/deleteProd/{id}(id=${product.id})}" class="uk-button uk-button-danger uk-margin-small-right lab">Delete</a></td>
 
-
+</div>
 </tr>
 
 

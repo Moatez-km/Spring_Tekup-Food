@@ -119,11 +119,12 @@ public class UserRest {
 			
 				session.setAttribute("sold",user.getNom());
 				session.setAttribute("users", user);
-				return "/listProduct.html";
+				return "redirect:/listProduct.html";
 			}if(user.getType().equals("client")) {
-				session.setAttribute("id",user.getId());
+				
 				session.setAttribute("sold",user.getSolde());
 				session.setAttribute("email",user.getEmail());
+				session.setAttribute("users", user);
 				return "redirect:/menu";
 			}
 			

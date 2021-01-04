@@ -332,7 +332,7 @@ color: #006400;
 <tbody >
 
 <tr th:each="cmd: ${commande}">
-
+<div th:if="${cmd.nom_part}==${session.sold}">
 
  <td class="lab2"><b>[[*{cmd.nom_prod}]]</b>
 <br>
@@ -341,7 +341,7 @@ color: #006400;
 
 </td>
 
-<td class="lab2"><b>[[*{cmd.desc}]]</b>
+<td class="lab2"><b>[[*{cmd.desco}]]</b>
 <br>
 
 
@@ -380,7 +380,7 @@ color: #006400;
 
 </tr>
 
-
+</div>
 </tbody>
 
 
