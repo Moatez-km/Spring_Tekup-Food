@@ -306,7 +306,7 @@ float:left;}
 </div>
 <ul class="nav_links">
 <li><a th:href="@{/}">Home</a></li>
-<li><a href="@{/menu.html}">Menu</a></li>
+<li><a th:href="@{/menu}">Menu</a></li>
 <li><a th:href="@{/}">About</a></li>
 <li><a th:href="@{/}">Contact</a></li>
 <li><a th:href="@{/login}"><h1><i class="fa fa-user-circle-o" aria-hidden="true"></i></h1></a><li>
@@ -439,11 +439,12 @@ float:left;}
 <p class="h2 center padding-small ">IT'S NEVER LATE TO CONTACT US !</p>
 <p class="h5 center padding-small"> Lorem, ipsum dolor sit amet, Doloremque quos ipsum, ipsa molestiae adipisci optio facere nihil distinctio tenetur.</p>
 <center>
-<form method="get" action='#'>
+<form method="post" action='/addcontact'>
 <input type="hidden"  name="action" value="" >
 <label for="fname"class="lab">Email :</label>
   <input type="email"  name="email"class="input1"><br>
   <textarea  name="message" rows="4" cols="50"class="input2" placeholder="Your message.."></textarea>
+  <input type="hidden" class="form-control input1" name="date" th:value="${#dates.format(#dates.createNow(), 'dd MMM YYYY hh:mm')}">
   <div class="row">
     <input type="submit" value="Envoyer" class="sub">
    

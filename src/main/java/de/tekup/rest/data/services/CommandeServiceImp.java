@@ -19,7 +19,7 @@ public class CommandeServiceImp implements CommandService{
 
 	@Override
 	public void saveCommandToDB(String nom_prod, String desco, Double montant, String email_usr, String date_cmd,
-			String nom_part,long idu) {
+			String nom_part,long idu,int quantity) {
 		// TODO Auto-generated method stub
 		
 		Commande c=new Commande();
@@ -29,13 +29,15 @@ public class CommandeServiceImp implements CommandService{
 		c.setNom_part(nom_part);
 		c.setEmail_usr(email_usr);
 		c.setDate_cmd(date_cmd);
+		c.setQuatity(quantity);
 		c.setUser(UserRepository.findById(idu).get());
-		
+		Double Q;
+		Q=montant*quantity;
 		Double s=(double) 0;
 		User p =new User();
 		p=UserRepository.findById(idu).get();
-		if(p.getSolde()>=montant) {
-			s=p.getSolde()-montant;
+		if(p.getSolde()>=Q) {
+			s=p.getSolde()-Q;
 			p.setSolde(s);
 			}else {
 				

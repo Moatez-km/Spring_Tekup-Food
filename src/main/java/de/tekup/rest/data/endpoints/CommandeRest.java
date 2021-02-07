@@ -29,8 +29,8 @@ public class CommandeRest {
 	
 	@PostMapping("/addCmd")
 	public String saveCommande(@RequestParam ("nom_prod")String nom_prod, @RequestParam ("desc") String desco,@RequestParam ("montant") Double montant,@RequestParam ("email_usr") String email_usr,@RequestParam ("date_cmd") String date_cmd,
-			@RequestParam ("nom_part") String nom_part,@RequestParam ("idu")long idu) {
-				cmd_service.saveCommandToDB(nom_prod, desco, montant, email_usr, date_cmd, nom_part, idu);
+			@RequestParam ("nom_part") String nom_part,@RequestParam ("idu")long idu,@RequestParam ("quantity")int quantity) {
+				cmd_service.saveCommandToDB(nom_prod, desco, montant, email_usr, date_cmd, nom_part, idu,quantity);
 				return "redirect:/commandSucc";
 	}
 

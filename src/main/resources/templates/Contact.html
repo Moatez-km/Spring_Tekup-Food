@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>List Commande</title>
-  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-comptible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
   <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+   <script type="text/javascript" th:src="@{/bootstrap.bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.bundle.js}"></script>
    <link rel="stylesheet" th:href="@{/uikit.min.css}">
   <script type="text/javascript" th:src="@{/uikit.min.js}"></script>
   <link rel="stylesheet" th:href="@{/style.css}">
-   <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
-  
-<style> 
+       <link rel="stylesheet" th:href="@{/fonts/font-awesome/css/font-awesome.css}">
+    
+    
+   
+   
+    <title>Contact</title>
+    <style> 
 .titre1 {
   width: 100px;
   height: 100px;
@@ -95,16 +102,15 @@ font-family: "Montserrat", sans-serif;
   .lab{
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-  color:rgba(226,226,226);
+  color: Black;
   text-align: justify;
   text-justify: inter-word;
   
 
 }
-  
 .input1 {
-  width: 80%;
-  padding: 12px 20px;
+  width: 50%;
+  padding: 4px 20px;
   margin: 8px 5px;
   box-sizing: border-box;
   border: 2px solid #0088a9;
@@ -115,14 +121,14 @@ font-family: "Montserrat", sans-serif;
 
 }
 .input2 {
-  width: 80%;
-  padding: 12px 20px;
+  width: 10%;
+  padding: 4px 20px;
   margin: 10px 10px;
   box-sizing: border-box;
   border: 2px solid #0088a9;
   border-radius: 4px;
-  background-color: #1e1e26;
-  color:rgba(226,226,226);
+  color: #1e1e26;
+  background-color:rgba(226,226,226);
 }
 .sub{
   width: 20%;
@@ -197,12 +203,14 @@ font-family: "Montserrat", sans-serif;
 .lab2{
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-  color: #1e1e26;
+  color:rgba(226,226,226);
   text-align: justify;
   text-justify: inter-word;
   
 
 }
+ 
+
 .dropdown {
   height: 4vh;
   width: 60%;
@@ -267,17 +275,13 @@ font-family: "Montserrat", sans-serif;
   pointer-events: all;
   transform: translateY(0px);
 }
-.links-clock{
+.symbol1:hover{
+      color: #4267b2;
+     
+  }
 
-color: #FF8C00;
-}
-.links-verify{
-
-color: #006400;
-}
 </style>
 </head>
-
 <body >
 <header>
 
@@ -285,115 +289,54 @@ color: #006400;
      
 <div class="logo">
  
-    <h4 class="titre lab"><b>TEK-UP FOOD</b> </h4>
+    <h4 class="titre">TEK-UP FOOD </h4>
 </div>
 <ul class="nav_links">
+<li><a th:href="@{/}">Home</a></li>
+<li><a th:href="@{/users}">ListUsers</a></li>
+<li><a th:href="@{/showNewUserForm}">AddUsers</a></li>
+<li><a href="@{/contact}">Contact</a></li>
 
-
-
-<li><a th:href="@{/listProduct.html}">Product</a></li>
-<li><a th:href="@{/listCommande.html}">Command</a></li>
 <li>
 <div class="dropdown ">
         
         <div class="projects ">
-          <button class="lab btn btn-info text-center" th:text="'Welcome '+${session.sold} "></button>
-         
+          <button class="lab btn btn-info text-center" th:text="'Welcome '+${session.sold} " ></button>
+          
         </div>
         
       </div>
       </li>
-<li> <a th:href="@{/log}"><h3 class="symbol1" ><i class="fa fa-sign-out" ></i></h3></a></li>
-
-
+<li> <a th:href="@{/login}"><h3 class="symbol1" ><i class="fa fa-sign-out" ></i></h3></a></li> 
 
 </ul>
 </nav>
-
+<div align="center">
+<h1 class="lab text-center">Contact Message</h1>
+</div>
 </header>
-<h3 class="text-center lab2">List of Command</h3>
+<br>
+
+<table border="1" class="table table-striped table-responsive-md">
+<thead class="thead-dark">
 
 
-<table class="table table-striped table-responsive-md" >
+<th>Email</th>
+<th>Message</th>
+<th>Date</th>
 
-<thead class="thead-dark lab">
-<tr>
-<th  scope="col">Name Product</th>
-<th scope="col">Description</th>
-<th scope="col">Amount</th>
-<th scope="col">Quantity</th>
-<th scope="col">Customer</th>
-<th scope="col">Partner</th>
-<th scope="col"> Date Command</th>
 
-<th scope="col"> Give Your Opinion</th>
 
-</tr>
 </thead>
-<tbody >
-
-<tr th:each="cmd: ${commande}">
-<div th:if="${cmd.nom_part}==${session.sold}">
-
- <td class="lab2"><b>[[*{cmd.nom_prod}]]</b>
-<br>
-
-  
-
-</td>
-
-<td class="lab2"><b>[[*{cmd.desco}]]</b>
-<br>
+<tbody>
 
 
-
-<td class="lab2"><b>[[*{cmd.montant}]]</b>
-<br>
-
-
-
-</td>
-<td class="lab2"><b>[[*{cmd.quatity}]]</b>
-<br>
+<tr th:each="cnt : ${listContact}">
+<td class="lab" th:text="${cnt.email}"></td>
+<td  class="lab" th:text="${cnt.message}"></td>
+<td  class="lab" th:text="${cnt.date}"></td>
 
 
-
-</td>
-<td class="lab2"><b>[[*{cmd.email_usr}]]</b>
-
-
-</td>
-<td class="lab2"><b>[[*{cmd.nom_part}]]</b>
-
-
-</td>
-<td class="lab2"><b>[[*{cmd.date_cmd}]]</b>
-
-
-</td>
-<td class="lab2">
-<div class="form-check inline">
-  <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-  <label class="form-check-label lab2" for="exampleRadios1">
-  In Progress <b><h3><div class="links-clock"><a class="links-clock"><i class="fa fa-clock-o" aria-hidden="true"></i></a></div></h3></b>
-  </label>
-  <br>
-  <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios2" value="option2" checked>
-  <label class="form-check-label lab2" for="exampleRadios2">
-    Verify <b><h3><div class="links-verify"><i class="fa fa-check-square" aria-hidden="true"></i></div></h3></b>
-  </label>
-</div>
-</td>
-
-</tr>
-
-</div>
-</tbody>
-
-
-
-
-</table>
-
-</body>
+    
+</body> 
 </html>

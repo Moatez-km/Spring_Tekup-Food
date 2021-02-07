@@ -29,6 +29,8 @@ private String nom_prod;
 	
 	private String nom_part;
 	
+	private int quatity;
+	
 	@ManyToOne
 	private User user;
 

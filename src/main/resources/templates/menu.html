@@ -10,7 +10,15 @@
   <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
    <link rel="stylesheet" th:href="@{/uikit.min.css}">
   <script type="text/javascript" th:src="@{/uikit.min.js}"></script>
-   
+    <script type="text/javascript">
+   $document.ready(function(){
+	 $('div_refresh').load();
+	 setInterval(function(){
+		 $('div_refresh').load();
+	 },3000);
+	 
+   });
+   </script>
    
     <title>Login</title>
   <style> 
@@ -351,14 +359,14 @@ nav{
 </div>
 <ul class="nav_links">
 <li><a th:href="@{/}">Home</a></li>
-<li><a href="@{/}">Menu</a></li>
+<li><a th:href="@{/menu}">Menu</a></li>
 <li><a th:href="@{/}">About</a></li>
-<li><a th:href="@{/listProduct.html}">Product</a></li>
+
 <li>
 <div class="dropdown ">
         
         <div class="projects ">
-          <button class="lab btn btn-info text-center" th:text="'Sold '+${session.sold} +'DT'"></button>
+          <button class="lab btn btn-info text-center" id="div_refresh" th:text="'Sold '+${session.sold} +'DT'"></button>
          
         </div>
         
@@ -427,6 +435,8 @@ nav{
 <input type="text" class="form-control input1" name="desc" th:value="*{product.description}" >
 <label class="lab">Product Price :</label>
 <input type="text" class="form-control input1" name="montant" th:value="*{product.prix}" >
+<label class="lab">Quantity :</label>
+<input type="number" class="form-control input1" name="quantity" th:value="*{product.quantity}" >
 <input type="hidden" class="form-control input1" name="email_usr" th:value="${session.email}">
 <input type="hidden" class="form-control input1" name="nom_part" th:value="*{product.user.nom}" >
 
